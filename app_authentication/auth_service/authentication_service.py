@@ -1,5 +1,4 @@
-from app_authentication.auth_handler import auth_pb2
-from app_authentication.auth_handler import auth_pb2_grpc
+from app_authentication.auth_proto import auth_pb2, auth_pb2_grpc
 
 response_text = "Authentication "
 

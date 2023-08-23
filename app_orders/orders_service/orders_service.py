@@ -1,5 +1,4 @@
-from app_orders.orders_handler import orders_pb2
-from app_orders.orders_handler import orders_pb2_grpc
+from app_orders.orders_proto import orders_pb2, orders_pb2_grpc
 
 response_text = "Orders "
 

@@ -2,10 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import shop_pb2 as shop__pb2
+from app_authentication.auth_proto import auth_pb2 as auth__pb2
 
 
-class ShopServiceStub(object):
+class AuthenticationServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -14,42 +14,42 @@ class ShopServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Shop = channel.unary_unary(
-                '/shop.ShopService/Shop',
-                request_serializer=shop__pb2.ShopRequest.SerializeToString,
-                response_deserializer=shop__pb2.ShopResponse.FromString,
+        self.Auth = channel.unary_unary(
+                '/shop.AuthenticationService/Auth',
+                request_serializer=auth__pb2.AuthRequest.SerializeToString,
+                response_deserializer=auth__pb2.AuthResponse.FromString,
                 )
 
 
-class ShopServiceServicer(object):
+class AuthenticationServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def Shop(self, request, context):
+    def Auth(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_ShopServiceServicer_to_server(servicer, server):
+def add_AuthenticationServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Shop': grpc.unary_unary_rpc_method_handler(
-                    servicer.Shop,
-                    request_deserializer=shop__pb2.ShopRequest.FromString,
-                    response_serializer=shop__pb2.ShopResponse.SerializeToString,
+            'Auth': grpc.unary_unary_rpc_method_handler(
+                    servicer.Auth,
+                    request_deserializer=auth__pb2.AuthRequest.FromString,
+                    response_serializer=auth__pb2.AuthResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'shop.ShopService', rpc_method_handlers)
+            'shop.AuthenticationService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class ShopService(object):
+class AuthenticationService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Shop(request,
+    def Auth(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class ShopService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/shop.ShopService/Shop',
-            shop__pb2.ShopRequest.SerializeToString,
-            shop__pb2.ShopResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/shop.AuthenticationService/Auth',
+            auth__pb2.AuthRequest.SerializeToString,
+            auth__pb2.AuthResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -1,0 +1,15 @@
+syntax = 'proto3';
+
+package shop;
+
+service ShopService {
+  rpc Shop(ShopRequest) returns (ShopResponse) {}
+}
+
+message ShopRequest {
+  string message = 1;
+}
+
+message ShopResponse {
+  string message = 1;
+}

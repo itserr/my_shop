@@ -20,7 +20,17 @@ def main():
 
 
 if __name__ == '__main__':
-    sys.path.append(sys.path[0][:-6])
-    sys.path.append(sys.path[0][:-6] + "/configuration/paths.py")
+    # sys.path.append(sys.path[0][:-6])
+    # sys.path.append(sys.path[0][:-6] + "/configuration/paths.py")
+    # exec(open(sys.path[len(sys.path) - 1]).read())
+    for i in range(len(sys.path)):
+        if sys.path[i][-7:] == 'my_shop':
+            sys.path.append(sys.path[i])
+            sys.path.append(sys.path[i] + "/configuration/paths.py")
+            break
+        elif sys.path[i][-5:] == 'proxy':
+            sys.path.append(sys.path[i][:-6])
+            sys.path.append(sys.path[i][:-6] + "/configuration/paths.py")
+            break
     exec(open(sys.path[len(sys.path) - 1]).read())
     main()

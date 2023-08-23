@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Add product to cart</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>Product:<br> <input name="inputData" /></p>
+        <input type="submit" value="Add" />
+    </form>
+</body>
+</html>

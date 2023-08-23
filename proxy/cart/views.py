@@ -1,7 +1,7 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from configuration.channel import channel
-from app_cart.cart_handler import cart_handler, cart_pb2_grpc
+from app_cart.cart_handler import cart_handler
+from app_cart.cart_proto import cart_pb2_grpc
 
 
 def cart(request):

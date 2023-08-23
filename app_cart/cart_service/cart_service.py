@@ -1,6 +1,4 @@
-from app_cart.cart_handler import cart_pb2
-from app_cart.cart_handler import cart_pb2_grpc
-
+from app_cart.cart_proto import cart_pb2, cart_pb2_grpc
 
 response_text = "Cart "
 

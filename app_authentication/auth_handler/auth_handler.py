@@ -1,4 +1,4 @@
-import auth_pb2
+from app_authentication.auth_proto import auth_pb2
 
 
 class AuthenticationService:

@@ -1,4 +1,4 @@
-import shop_pb2
+from app_shop.shop_proto import shop_pb2
 
 
 class ShopService:

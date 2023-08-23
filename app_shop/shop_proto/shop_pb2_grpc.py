@@ -2,10 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import cart_pb2 as cart__pb2
+from app_shop.shop_proto import shop_pb2 as shop__pb2
 
 
-class CartServiceStub(object):
+class ShopServiceStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -14,42 +14,42 @@ class CartServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.Cart = channel.unary_unary(
-                '/shop.CartService/Cart',
-                request_serializer=cart__pb2.CartRequest.SerializeToString,
-                response_deserializer=cart__pb2.CartResponse.FromString,
+        self.Shop = channel.unary_unary(
+                '/shop.ShopService/Shop',
+                request_serializer=shop__pb2.ShopRequest.SerializeToString,
+                response_deserializer=shop__pb2.ShopResponse.FromString,
                 )
 
 
-class CartServiceServicer(object):
+class ShopServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def Cart(self, request, context):
+    def Shop(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_CartServiceServicer_to_server(servicer, server):
+def add_ShopServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Cart': grpc.unary_unary_rpc_method_handler(
-                    servicer.Cart,
-                    request_deserializer=cart__pb2.CartRequest.FromString,
-                    response_serializer=cart__pb2.CartResponse.SerializeToString,
+            'Shop': grpc.unary_unary_rpc_method_handler(
+                    servicer.Shop,
+                    request_deserializer=shop__pb2.ShopRequest.FromString,
+                    response_serializer=shop__pb2.ShopResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'shop.CartService', rpc_method_handlers)
+            'shop.ShopService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class CartService(object):
+class ShopService(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Cart(request,
+    def Shop(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class CartService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/shop.CartService/Cart',
-            cart__pb2.CartRequest.SerializeToString,
-            cart__pb2.CartResponse.FromString,
+        return grpc.experimental.unary_unary(request, target, '/shop.ShopService/Shop',
+            shop__pb2.ShopRequest.SerializeToString,
+            shop__pb2.ShopResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

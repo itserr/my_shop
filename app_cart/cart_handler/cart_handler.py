@@ -1,4 +1,4 @@
-import cart_pb2
+from app_cart.cart_proto import cart_pb2
 
 
 class CartService:

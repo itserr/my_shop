@@ -1,16 +1,16 @@
-import sys
-sys.path.append(sys.path[1]+"/configuration/paths.py")
-exec(open(sys.path[len(sys.path)-1]).read())
+# import sys
+# sys.path.append(sys.path[1]+"/configuration/paths.py")
+# exec(open(sys.path[len(sys.path)-1]).read())
 
 import grpc
 from concurrent import futures
-from app_shop.shop_handler import shop_pb2_grpc
+from app_shop.shop_proto import shop_pb2_grpc
 from app_shop.shop_service import shop_service
-from app_orders.orders_handler import orders_pb2_grpc
+from app_orders.orders_proto import orders_pb2_grpc
 from app_orders.orders_service import orders_service
-from app_cart.cart_handler import cart_pb2_grpc
+from app_cart.cart_proto import cart_pb2_grpc
 from app_cart.cart_service import cart_service
-from app_authentication.auth_handler import auth_pb2_grpc
+from app_authentication.auth_proto import auth_pb2_grpc
 from app_authentication.auth_service import authentication_service
 
 
